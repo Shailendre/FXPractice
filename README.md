@@ -1,2 +1,2 @@
 # FXPractice
-Sample java fx project. Login page demo.
+Sample java fx project. Login window demo.
