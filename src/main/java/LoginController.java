@@ -2,9 +2,8 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,8 +24,6 @@ public class LoginController implements Initializable {
     @FXML
     Button loginBtn;
 
-    private boolean loginGranted = false;
-
     public final static String ADMIN = "admin";
 
 
@@ -42,20 +39,23 @@ public class LoginController implements Initializable {
             return new String[]{"Admin access required", "Wrong credentials!"};
     }
 
+    //set ans show Alert
+    private void setAndShowAlert(String[] msgDetails, Alert.AlertType alertType){
+        Alert alert = new Alert(alertType);
+        alert.setTitle("Dialog Box");
+        alert.setHeaderText(msgDetails[0]);
+        alert.setContentText(msgDetails[1]);
+        alert.showAndWait();
+    }
 
     @FXML
     public void onLoginClick(ActionEvent actionEvent) throws Exception {
-
         String uname = unameTextField.getText();
         String pword = passTextField.getText();
-
-        Alert alert = new Alert();
-
         //test on admin login
         if (uname.equals(ADMIN) && pword.equals(ADMIN))
-            alert.getAlertStage(getAlertMsg(true));
-
+            setAndShowAlert(getAlertMsg(true), Alert.AlertType.INFORMATION);
         else
-            alert.getAlertStage(getAlertMsg(false));
+            setAndShowAlert(getAlertMsg(false), Alert.AlertType.ERROR);
     }
 }
