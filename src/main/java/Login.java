@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 /**
  * Created by shailendra.singh on 7/12/16.
  */
-public class LoginMain extends Application {
+public class Login extends Application {
 
 
     public static void main(String args[]){
